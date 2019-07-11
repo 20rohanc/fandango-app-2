@@ -1,8 +1,8 @@
-package app.repository;
+package com.intern.services.fandango.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import app.model.Theater;
+import com.intern.services.fandango.model.Theater;
 
 import java.util.List;
 

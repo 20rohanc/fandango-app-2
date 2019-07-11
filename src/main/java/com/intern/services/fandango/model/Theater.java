@@ -1,4 +1,4 @@
-package app.model;
+package com.intern.services.fandango.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
