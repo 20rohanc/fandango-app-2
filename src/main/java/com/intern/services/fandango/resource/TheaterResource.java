@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.intern.services.fandango.model.Theater;
 import com.intern.services.fandango.repository.TheaterRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/rest/theaters")
@@ -24,8 +26,14 @@ public class TheaterResource {
 
 	//Gets all theaters in database
 	@GetMapping("/all")
-	public List<Theater> getAll() {
-		return theaterRepository.findAll();
+	public List<String> getAll() {
+		List<Theater> theaterList = theaterRepository.findAll();
+		List<String> s = new ArrayList<String>();
+		for (Theater t: theaterList)
+		{
+			s.add(t.getName());
+		}
+		return s;
 	}
 
 	//Gets all theaters with a certain name
