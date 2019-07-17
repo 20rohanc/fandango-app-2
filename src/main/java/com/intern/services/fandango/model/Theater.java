@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.intern.services.fandango.model.Screen;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,7 +29,7 @@ public class Theater implements Serializable{
 
 	@OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
 	@JsonManagedReference
-    private List<Screen> screens; 
+    private List<Screen> screens = new ArrayList<Screen>(); 
 
     public Theater() {
     }
@@ -41,6 +42,17 @@ public class Theater implements Serializable{
     public List<Screen> getScreens() {
 		return screens;
 	}
+    
+    public void alterScreen(Screen removedScreen, Screen newScreen)
+    {
+    	for (int i = 0; i < screens.size(); i++)
+    	{
+    		if (screens.get(i).equals(removedScreen))
+    		{
+    			screens.set(i, newScreen);
+    		}
+    	}
+    }
 
 	public void setScreens(List<Screen> screens) {
 		this.screens = screens;
@@ -61,4 +73,9 @@ public class Theater implements Serializable{
     public void setName(String newname) {
         name = newname;
     }
+
+	public void addScreen(Screen s)
+	{
+		screens.add(s);
+	}
 }
